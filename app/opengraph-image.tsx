@@ -1,9 +1,9 @@
 import { ImageResponse } from 'next/og';
-
-export const runtime = 'edge';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 // Image metadata
-export const alt = 'GLM Catalog — Community Hub for Z.ai & GLM';
+export const alt = 'GLM Catalog — Instruction Library for GLM';
 export const size = {
     width: 1200,
     height: 630,
@@ -13,6 +13,9 @@ export const contentType = 'image/png';
 
 // Image generation
 export default async function Image() {
+    const logoBuffer = readFileSync(join(process.cwd(), 'public', 'logo.png'));
+    const logoDataUrl = `data:image/png;base64,${logoBuffer.toString('base64')}`;
+
     return new ImageResponse(
         (
             <div
@@ -64,44 +67,16 @@ export default async function Image() {
                             marginBottom: '40px',
                         }}
                     >
-                        <div
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={logoDataUrl}
+                            alt="GLM Catalog"
                             style={{
                                 width: '100px',
                                 height: '100px',
-                                borderRadius: '24px',
-                                background: 'linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%)',
                                 marginRight: '32px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1)',
                             }}
-                        >
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M12 2L2 7L12 12L22 7L12 2Z"
-                                    fill="#000"
-                                    stroke="#000"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M2 17L12 22L22 17"
-                                    stroke="#000"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M2 12L12 17L22 12"
-                                    stroke="#000"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </div>
+                        />
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <h1
                                 style={{
@@ -125,7 +100,7 @@ export default async function Image() {
                                     textTransform: 'uppercase',
                                 }}
                             >
-                                Z.ai Community Directory
+                                Instruction Library for GLM
                             </span>
                         </div>
                     </div>
@@ -142,8 +117,7 @@ export default async function Image() {
                             fontWeight: '500',
                         }}
                     >
-                        The home for Z.ai enthusiasts. Explore rules, browse MCPs, and connect with the GLM
-                        community.
+                        Discover reusable rules, skills, and workflows that improve GLM outputs.
                     </p>
                 </div>
             </div>
