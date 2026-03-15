@@ -53,31 +53,31 @@ export default function AboutSection() {
                                 <p className="mt-1 text-xs leading-relaxed text-[#666]">
                                     The rules collection in GLM Catalog was originally sourced from and inspired by the{" "}
                                     <a
-                                        href="https://github.com/richardsondx/cursor.directory/"
+                                        href="https://github.com/leerob/directories"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-[#ffffff] underline underline-offset-2 transition-colors hover:text-[#dddddd]"
                                     >
-                                        cursor.directory
+                                        directories
                                     </a>{" "}
                                     project by{" "}
                                     <a
-                                        href="https://github.com/richardsondx"
+                                        href="https://github.com/leerob"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-[#ffffff] underline underline-offset-2 transition-colors hover:text-[#dddddd]"
                                     >
-                                        @richardsondx
+                                        Lee Robinson
                                     </a>
                                     . This incredible open-source directory curates Cursor rules across dozens of frameworks, languages, and tools — making it easier for developers to find and use high-quality AI coding rules. We imported, adapted, and expanded upon this collection to work within the GLM Catalog ecosystem.
                                 </p>
                                 <a
-                                    href="https://github.com/richardsondx/cursor.directory/"
+                                    href="https://github.com/leerob/directories"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs text-[#888] transition-colors hover:bg-white/10 hover:text-white"
                                 >
-                                    View cursor.directory →
+                                    View directories →
                                 </a>
                             </div>
                         </div>

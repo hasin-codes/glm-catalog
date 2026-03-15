@@ -513,7 +513,7 @@ Please read our [Contributing Guide](CONTRIBUTING.md) for detailed instructions 
 
 GLM Catalog stands on the shoulders of amazing open-source projects:
 
-- **[cursor.directory](https://github.com/richardsondx/cursor.directory/)** by [@richardsondx](https://github.com/richardsondx) — The original rules collection that inspired and seeded our rules browser
+- **[directories](https://github.com/leerob/directories)** by [Lee Robinson](https://github.com/leerob) — The original Cursor rules directory that inspired and seeded our rules browser
 - **[Z.ai](https://z.ai/)** — The AI platform behind the GLM model
 - **[Next.js](https://nextjs.org/)**, **[React](https://react.dev/)**, **[Tailwind CSS](https://tailwindcss.com/)**, **[Shadcn UI](https://ui.shadcn.com/)** — The open-source tools powering this project
 
