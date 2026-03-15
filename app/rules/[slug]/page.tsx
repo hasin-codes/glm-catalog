@@ -1,4 +1,5 @@
 import RuleCard from "@/components/RuleCard";
+import Footer from "@/components/Footer";
 import { getRuleBySlug, rules } from "@/data";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -42,7 +43,7 @@ export default async function RuleDetailPage({
         </p>
         <Link
           href="/rules"
-          className="mt-6 inline-flex items-center gap-2 text-sm text-[#00d4aa] hover:underline"
+          className="mt-6 inline-flex items-center gap-2 text-sm text-teal hover:underline"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to all rules
@@ -63,6 +64,7 @@ export default async function RuleDetailPage({
       <div className="mt-8">
         <RuleCard rule={rule} isPage={true} />
       </div>
+      <Footer />
     </div>
   );
 }

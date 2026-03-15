@@ -12,6 +12,7 @@ function RulesContent() {
     const q = searchParams.get("q") || "";
     const selectedTags = q ? q.split(",").filter(Boolean) : [];
     const [selectingMode, setSelectingMode] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     function addTag(tag: string) {
         if (selectedTags.includes(tag) || selectedTags.length >= 5) return;
@@ -35,17 +36,26 @@ function RulesContent() {
     }
 
     return (
-        <div className="mx-auto flex max-w-7xl gap-6 px-6 py-6 h-full overflow-hidden">
-            <RulesSidebar selectedTags={selectedTags} onAddTag={addTag} selectingMode={selectingMode} />
-            <div className="flex-1 min-w-0">
-                <RulesGrid
+        <div className="mx-auto max-w-7xl px-6 py-6 h-full overflow-hidden">
+            <div className="flex gap-6 h-full overflow-hidden">
+                <RulesSidebar
                     selectedTags={selectedTags}
-                    onRemoveTag={removeTag}
-                    onClearTags={clearTags}
                     onAddTag={addTag}
                     selectingMode={selectingMode}
-                    onToggleSelecting={toggleSelecting}
+                    isOpen={sidebarOpen}
+                    onClose={() => setSidebarOpen(false)}
                 />
+                <div className="flex-1 min-w-0">
+                    <RulesGrid
+                        selectedTags={selectedTags}
+                        onRemoveTag={removeTag}
+                        onClearTags={clearTags}
+                        onAddTag={addTag}
+                        selectingMode={selectingMode}
+                        onToggleSelecting={toggleSelecting}
+                        onOpenSidebar={() => setSidebarOpen(true)}
+                    />
+                </div>
             </div>
         </div>
     );

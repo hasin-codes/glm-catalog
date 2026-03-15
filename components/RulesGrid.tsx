@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Menu } from "lucide-react";
 import RuleCard from "./RuleCard";
 import Footer from "./Footer";
 import { rules, getSections } from "@/data";
@@ -13,9 +14,10 @@ interface RulesGridProps {
   onAddTag: (tag: string) => void;
   selectingMode: boolean;
   onToggleSelecting: () => void;
+  onOpenSidebar: () => void;
 }
 
-export default function RulesGrid({ selectedTags, onRemoveTag, onClearTags, selectingMode, onToggleSelecting }: RulesGridProps) {
+export default function RulesGrid({ selectedTags, onRemoveTag, onClearTags, selectingMode, onToggleSelecting, onOpenSidebar }: RulesGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredRules = useMemo(() => {
@@ -62,9 +64,18 @@ export default function RulesGrid({ selectedTags, onRemoveTag, onClearTags, sele
   return (
     <div className="flex flex-col h-full">
       {/* Tab Group + Search — fixed */}
-      <div className="shrink-0 mb-6 flex items-center justify-between">
-        {/* Tab group */}
-        <div className="inline-flex items-center rounded-lg border border-white/10 bg-[#111] p-0.5 gap-0.5">
+      <div className="shrink-0 mb-6 flex items-center justify-between gap-3">
+        {/* Mobile filter button */}
+        <button
+          onClick={onOpenSidebar}
+          className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111] px-3 py-2 text-sm text-[#888] transition-colors hover:border-white/20 hover:text-white lg:hidden"
+        >
+          <Menu className="h-4 w-4" />
+          Filter
+        </button>
+
+        {/* Desktop tab group */}
+        <div className="hidden lg:inline-flex items-center rounded-lg border border-white/10 bg-[#111] p-0.5 gap-0.5">
           {/* All tab */}
           <button
             onClick={onClearTags}
@@ -108,7 +119,8 @@ export default function RulesGrid({ selectedTags, onRemoveTag, onClearTags, sele
           placeholder="Search rules..."
           value={searchQuery}
           onChange={setSearchQuery}
-          className="max-w-xs"
+          className="ml-auto max-w-xs"
+          compact
         />
       </div>
 

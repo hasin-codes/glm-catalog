@@ -2,6 +2,7 @@ import FeaturedMCPsRow from "@/components/FeaturedMCPsRow";
 import FeaturedProjectsRow from "@/components/FeaturedProjectsRow";
 import HeroSection from "@/components/HeroSection";
 import RuleCard from "@/components/RuleCard";
+import Footer from "@/components/Footer";
 import { getSections } from "@/data";
 import Link from "next/link";
 
@@ -36,6 +37,7 @@ export default function HomePage() {
           </div>
         </section>
       ))}
+      <Footer />
     </>
   );
 }

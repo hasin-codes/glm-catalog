@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Tag, User, Zap } from "lucide-react";
 import { getProjectBySlug, projects } from "@/data/projects";
+import Footer from "@/components/Footer";
 
 type Params = Promise<{ slug: string }>;
 
@@ -51,6 +52,7 @@ export default async function ProjectDetailPage({
     }
 
     return (
+        <>
         <div className="mx-auto max-w-4xl px-6 py-8">
             {/* Back link */}
             <Link
@@ -153,6 +155,8 @@ export default async function ProjectDetailPage({
                 </div>
             )}
         </div>
+        <Footer />
+        </>
     );
 }
 

@@ -1,7 +1,9 @@
 import { Calendar } from "lucide-react";
+import Footer from "@/components/Footer";
 
 export default function EventsPage() {
     return (
+        <>
         <div className="mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-32 text-center">
             <div className="rounded-full border border-white/10 bg-[#111] p-4">
                 <Calendar className="h-8 w-8 text-[#ffffff]" />
@@ -11,5 +13,7 @@ export default function EventsPage() {
                 {"Coming soon — stay tuned for upcoming Z.ai community events"}
             </p>
         </div>
+        <Footer />
+        </>
     );
 }

@@ -1,4 +1,5 @@
 import SkillCard from "@/components/SkillCard";
+import Footer from "@/components/Footer";
 import { getSkillBySlug, skills } from "@/data/skills";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -42,7 +43,7 @@ export default async function SkillDetailPage({
                 </p>
                 <Link
                     href="/skills"
-                    className="mt-6 inline-flex items-center gap-2 text-sm text-[#00d4aa] hover:underline"
+                    className="mt-6 inline-flex items-center gap-2 text-sm text-teal hover:underline"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to all skills
@@ -63,6 +64,7 @@ export default async function SkillDetailPage({
             <div className="mt-8">
                 <SkillCard skill={skill} isPage={true} />
             </div>
+            <Footer />
         </div>
     );
 }

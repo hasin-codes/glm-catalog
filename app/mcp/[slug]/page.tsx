@@ -3,11 +3,12 @@ import { ArrowLeft, ExternalLink, Github, Terminal, Tag, Zap, User } from "lucid
 import { getMCPBySlug, mcps } from "@/data/mcps";
 import CopyButton from "@/components/CopyButton";
 import ZreadIcon from "@/components/ZreadIcon";
+import Footer from "@/components/Footer";
 import ZaiIcon from "@/components/ZaiIcon";
 import ZhipuIcon from "@/components/ZhipuIcon";
 
 function MCPIcon({ icon }: { icon: string }) {
-    if (icon === "zread") return <ZreadIcon className="w-8 h-8 text-[#00d4aa]" />;
+    if (icon === "zread") return <ZreadIcon className="w-8 h-8 text-teal" />;
     if (icon === "zai") return <ZaiIcon className="w-8 h-8" />;
     if (icon === "zhipu") return <ZhipuIcon className="w-8 h-8" />;
     return <span className="text-3xl">{icon}</span>;
@@ -52,7 +53,7 @@ export default async function MCPDetailPage({
                 </p>
                 <Link
                     href="/mcp"
-                    className="mt-6 inline-flex items-center gap-2 text-sm text-[#00d4aa] hover:underline"
+                    className="mt-6 inline-flex items-center gap-2 text-sm text-teal hover:underline"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to all MCPs
@@ -62,6 +63,7 @@ export default async function MCPDetailPage({
     }
 
     return (
+        <>
         <div className="mx-auto max-w-4xl px-6 py-8">
             {/* Back link */}
             <Link
@@ -117,7 +119,7 @@ export default async function MCPDetailPage({
                 </h2>
                 <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#0a0a0a] px-4 py-3">
                     <Terminal className="h-4 w-4 shrink-0 text-[#555]" />
-                    <code className="flex-1 overflow-x-auto text-sm text-[#00d4aa] whitespace-nowrap">
+                    <code className="flex-1 overflow-x-auto text-sm text-teal whitespace-nowrap">
                         {mcp.installCommand}
                     </code>
                     <CopyButton content={mcp.installCommand} />
@@ -135,7 +137,7 @@ export default async function MCPDetailPage({
                             key={i}
                             className="flex items-center gap-3 rounded-lg border border-white/5 bg-[#0a0a0a] px-4 py-3"
                         >
-                            <Zap className="h-4 w-4 shrink-0 text-[#00d4aa]" />
+                            <Zap className="h-4 w-4 shrink-0 text-teal" />
                             <span className="text-sm text-[#ccc]">{feature}</span>
                         </div>
                     ))}
@@ -168,7 +170,7 @@ export default async function MCPDetailPage({
                             href={mcp.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:border-white/20 hover:bg-[#1a1a1a]"
+                            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:border-white/20 hover:bg-card-surface-hover"
                         >
                             <Github className="h-4 w-4" />
                             View on GitHub
@@ -180,7 +182,7 @@ export default async function MCPDetailPage({
                             href={mcp.author.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:border-white/20 hover:bg-[#1a1a1a]"
+                            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:border-white/20 hover:bg-card-surface-hover"
                         >
                             <User className="h-4 w-4" />
                             {mcp.author.name}
@@ -190,6 +192,8 @@ export default async function MCPDetailPage({
                 </div>
             )}
         </div>
+        <Footer />
+        </>
     );
 }
 

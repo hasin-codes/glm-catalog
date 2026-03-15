@@ -2,14 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
-    const pathname = usePathname();
-
-    // Hide global footer on rules page — it's rendered inside the scrollable grid
-    if (pathname.startsWith("/rules")) return null;
-
     return (
         <footer className="border-t border-white/5 bg-[#0a0a0a]">
             <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-6 sm:flex-row sm:justify-between">

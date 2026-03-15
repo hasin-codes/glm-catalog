@@ -1,15 +1,18 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { Menu } from "lucide-react";
 import { skills, skillCategories } from "@/data/skills";
 import SkillCard from "./SkillCard";
 import SearchBar from "./SearchBar";
+import Footer from "./Footer";
 
 interface SkillGridProps {
   selectedCategory: string;
+  onOpenSidebar?: () => void;
 }
 
-export default function SkillGrid({ selectedCategory }: SkillGridProps) {
+export default function SkillGrid({ selectedCategory, onOpenSidebar }: SkillGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredSkills = useMemo(() => {
@@ -39,15 +42,27 @@ export default function SkillGrid({ selectedCategory }: SkillGridProps) {
   return (
     <div className="flex flex-col h-full">
       {/* Header + Search — fixed */}
-      <div className="shrink-0 mb-6 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-white">
+      <div className="shrink-0 mb-6 flex items-center justify-between gap-3">
+        {/* Mobile filter button */}
+        <button
+          onClick={onOpenSidebar}
+          className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111] px-3 py-2 text-sm text-[#888] transition-colors hover:border-white/20 hover:text-white lg:hidden"
+        >
+          <Menu className="h-4 w-4" />
+          Filter
+        </button>
+
+        {/* Desktop category title */}
+        <h2 className="hidden lg:block text-lg font-semibold text-white">
           {selectedCategory ? categoryName : "All Skills"}
         </h2>
+
         <SearchBar
           placeholder="Search skills..."
           value={searchQuery}
           onChange={setSearchQuery}
-          className="max-w-xs"
+          className="ml-auto max-w-xs"
+          compact
         />
       </div>
 
@@ -65,6 +80,8 @@ export default function SkillGrid({ selectedCategory }: SkillGridProps) {
             <p className="text-sm mt-1">Try adjusting your search or filter</p>
           </div>
         )}
+
+        <Footer />
       </div>
     </div>
   );
